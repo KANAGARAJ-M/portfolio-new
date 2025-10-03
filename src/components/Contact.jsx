@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, MessageSquare } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Mail, Phone, MapPin, Send, Github, Linkedin, Twitter, Instagram, MessageSquare, CheckCircle, Loader2 } from 'lucide-react'
 import './Contact.css'
 
 const Contact = () => {
@@ -10,6 +10,9 @@ const Contact = () => {
     subject: '',
     message: ''
   })
+  
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success', 'error', or null
 
   const contactInfo = [
     {
@@ -17,6 +20,12 @@ const Contact = () => {
       label: 'Email',
       value: 'kanagarajm638@gmail.com',
       link: 'mailto:kanagarajm638@gmail.com'
+    },
+    {
+      icon: Mail,
+      label: 'Email',
+      value: 'support@nocorps.org',
+      link: 'mailto:support@nocorps.org'
     },
     {
       icon: Phone,
@@ -66,12 +75,59 @@ const Contact = () => {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission logic here
-    console.log('Form submitted:', formData)
-    alert('Thank you for your message! I\'ll get back to you soon.')
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      // Add timestamp
+      const timestamp = new Date().toLocaleString()
+      
+      // Prepare data for Google Sheets
+      const submissionData = {
+        timestamp,
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message
+      }
+
+      // Replace with your Google Apps Script Web App URL
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzarPjVYuDzVdouAma6dAiHAauHEPU49wtFRIwn6n6JiW1LiGKLyDp6CTY7p2xxHgGu/exec'
+      
+      const response = await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(submissionData)
+      })
+
+      // Since we're using no-cors, we can't read the response
+      // but we'll assume success after a short delay
+      await new Promise(resolve => setTimeout(resolve, 2000))
+      
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null)
+      }, 5000)
+
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus(null)
+      }, 5000)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const quickActions = [
@@ -280,13 +336,149 @@ const Contact = () => {
 
                 <motion.button
                   type="submit"
-                  className="btn btn-primary submit-btn"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  className={`btn btn-primary submit-btn ${isSubmitting ? 'submitting' : ''} ${submitStatus ? `status-${submitStatus}` : ''}`}
+                  disabled={isSubmitting}
+                  whileHover={!isSubmitting ? { 
+                    scale: 1.05,
+                    boxShadow: "0 10px 30px rgba(78, 205, 196, 0.4)"
+                  } : {}}
+                  whileTap={!isSubmitting ? { scale: 0.95 } : {}}
+                  animate={{
+                    scale: submitStatus === 'success' ? [1, 1.1, 1] : 1,
+                    backgroundColor: submitStatus === 'success' ? '#4ECDC4' : 
+                                   submitStatus === 'error' ? '#FF6B6B' : '#4ECDC4'
+                  }}
+                  transition={{
+                    scale: {
+                      duration: 0.6,
+                      ease: "easeOut"
+                    },
+                    backgroundColor: {
+                      duration: 0.3,
+                      ease: "easeInOut"
+                    }
+                  }}
                 >
-                  <Send size={18} />
-                  Send Message
+                  <AnimatePresence mode="wait">
+                    {isSubmitting ? (
+                      <motion.div
+                        key="loading"
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ 
+                          opacity: 1, 
+                          y: 0,
+                          scale: [1, 1.05, 1]
+                        }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ 
+                          opacity: { duration: 0.2 },
+                          y: { duration: 0.3 },
+                          scale: { 
+                            duration: 1.5, 
+                            repeat: Infinity, 
+                            ease: "easeInOut" 
+                          }
+                        }}
+                        className="button-content"
+                      >
+                        <motion.div
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: 1,
+                            repeat: Infinity,
+                            ease: "linear"
+                          }}
+                        >
+                          <Loader2 size={18} />
+                        </motion.div>
+                        <span>Sending...</span>
+                      </motion.div>
+                    ) : submitStatus === 'success' ? (
+                      <motion.div
+                        key="success"
+                        initial={{ opacity: 0, scale: 0.3, y: 20 }}
+                        animate={{ 
+                          opacity: 1, 
+                          scale: 1, 
+                          y: 0,
+                          rotateY: [0, 360]
+                        }}
+                        exit={{ opacity: 0, scale: 0.3, y: -20 }}
+                        transition={{ 
+                          duration: 0.5,
+                          rotateY: { duration: 0.6, ease: "easeOut" }
+                        }}
+                        className="button-content"
+                      >
+                        <motion.div
+                          initial={{ scale: 0 }}
+                          animate={{ scale: 1 }}
+                          transition={{ delay: 0.2, duration: 0.3 }}
+                        >
+                          <CheckCircle size={18} />
+                        </motion.div>
+                        <span>Message Sent!</span>
+                      </motion.div>
+                    ) : submitStatus === 'error' ? (
+                      <motion.div
+                        key="error"
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ 
+                          opacity: 1, 
+                          x: 0,
+                          rotate: [0, -5, 5, -5, 0]
+                        }}
+                        exit={{ opacity: 0, x: 20 }}
+                        transition={{ 
+                          duration: 0.4,
+                          rotate: { duration: 0.5, ease: "easeOut" }
+                        }}
+                        className="button-content"
+                      >
+                        <Send size={18} />
+                        <span>Try Again</span>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="default"
+                        initial={{ opacity: 0, y: 5 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -5 }}
+                        transition={{ duration: 0.2 }}
+                        className="button-content"
+                      >
+                        <Send size={18} />
+                        <span>Send Message</span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </motion.button>
+
+                {/* Status Messages */}
+                <AnimatePresence>
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="status-message success-message"
+                    >
+                      <CheckCircle size={16} />
+                      Thank you! Your message has been sent successfully. I'll get back to you soon!
+                    </motion.div>
+                  )}
+                  
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="status-message error-message"
+                    >
+                      Sorry, there was an error sending your message. Please try again or contact me directly.
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </form>
             </div>
           </motion.div>

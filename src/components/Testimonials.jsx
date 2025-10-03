@@ -72,7 +72,7 @@ const Testimonials = () => {
 
   const stats = [
     { label: 'Happy Clients', value: '30+', icon: User },
-    { label: 'Projects Completed', value: '15+', icon: CheckCircle },
+    { label: 'Projects Completed', value: '25+', icon: CheckCircle },
     { label: 'Client Satisfaction', value: '100%', icon: Star },
     { label: 'Positive Reviews', value: '95%', icon: Building2 }
   ]

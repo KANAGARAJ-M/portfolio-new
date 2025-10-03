@@ -11,6 +11,8 @@ import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Testimonials from './components/Testimonials'
 import Footer from './components/Footer'
+import SEO from './components/SEO'
+import GoogleAnalytics from './components/GoogleAnalytics'
 import './App.css'
 
 function App() {
@@ -83,6 +85,8 @@ function App() {
   return (
     <AnimatePresence>
       <div className="App">
+        <SEO />
+        <GoogleAnalytics />
         <Header activeSection={activeSection} />
         <main>
           <section id="home">

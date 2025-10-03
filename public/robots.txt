@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kanagaraj.nocorps.org/sitemap.xml
+
+# Disallow admin or private directories (add if any)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all search engines to crawl the site
+Crawl-delay: 1
