@@ -10,7 +10,7 @@ const Experience = () => {
       company: 'Marcello Tech',
       type: 'Internship',
       location: 'Remote',
-      duration: '2024 - Present',
+      duration: '2024 - 2024',
       description: 'Specialized in Flutter and Android development, working on cross-platform mobile applications with modern UI/UX principles.',
       responsibilities: [
         'Developed cross-platform mobile applications using Flutter framework',

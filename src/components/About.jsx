@@ -4,10 +4,10 @@ import './About.css'
 
 const About = () => {
   const highlights = [
-    { icon: Code, value: '4+', label: 'Years Experience' },
-    { icon: Smartphone, value: '15+', label: 'Mobile Apps' },
-    { icon: Globe, value: '20+', label: 'Web Projects' },
-    { icon: Database, value: '10+', label: 'Databases' }
+    { icon: Code, value: '1+', label: 'Years Experience' },
+    { icon: Smartphone, value: '5+', label: 'Mobile Apps' },
+    { icon: Globe, value: '7+', label: 'Web Projects' },
+    // { icon: Database, value: '10+', label: 'Databases' }
   ]
 
   const expertise = [

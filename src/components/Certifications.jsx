@@ -12,7 +12,6 @@ const Certifications = () => {
       credentialId: 'LL-ADT-2024',
       description: 'Comprehensive training covering Android app development fundamentals, UI/UX design, and modern Android development practices.',
       skills: ['Android Studio', 'Kotlin', 'Java', 'UI/UX Design', 'Mobile Development'],
-      verificationUrl: '#',
       type: 'Professional',
       status: 'Verified'
     },
@@ -24,7 +23,6 @@ const Certifications = () => {
       credentialId: 'UC-FSAD-2024',
       description: 'End-to-end Android development course covering full-stack development, app deployment, and marketing strategies.',
       skills: ['Android Development', 'Backend Integration', 'App Store Optimization', 'Marketing', 'Full Stack'],
-      verificationUrl: '#',
       type: 'Professional',
       status: 'Verified'
     },
@@ -36,7 +34,6 @@ const Certifications = () => {
       credentialId: 'GUVI-TNCPL-2024',
       description: 'Tamil Nadu Chief Ministers Programming Language certification demonstrating proficiency in programming fundamentals and problem-solving.',
       skills: ['Programming Fundamentals', 'Problem Solving', 'Algorithms', 'Data Structures'],
-      verificationUrl: '#',
       type: 'Government',
       status: 'Verified'
     },
@@ -48,7 +45,6 @@ const Certifications = () => {
       credentialId: 'ISB-ANG-2024',
       description: 'Angular framework certification covering component-based architecture, TypeScript, and modern web development practices.',
       skills: ['Angular', 'TypeScript', 'Web Development', 'Component Architecture', 'SPA'],
-      verificationUrl: '#',
       type: 'Corporate',
       status: 'Verified'
     }
@@ -166,22 +162,11 @@ const Certifications = () => {
                   </div>
                 </div>
 
-                <div className="cert-credential">
-                  <span>Credential ID: {cert.credentialId}</span>
-                </div>
+               
               </div>
 
-              <div className="certification-actions">
-                <a 
-                  href={cert.verificationUrl} 
-                  className="cert-btn btn-primary"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink size={16} />
-                  Verify Certificate
-                </a>
-              </div>
+              
+             
 
               <div className="cert-border" style={{ backgroundColor: getTypeColor(cert.type) }} />
             </motion.div>

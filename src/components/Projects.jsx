@@ -9,11 +9,13 @@ const Projects = () => {
       title: 'Addagram',
       category: 'Social Media App',
       description: 'A comprehensive social media platform built with Flutter and Firebase, featuring real-time messaging, photo sharing, and social interactions.',
-      technologies: ['Flutter', 'Dart', 'Firebase', 'Python'],
+      technologies: ['Flutter', 'Dart', 'Firebase', 'Python', 'PostgreSQL'],
       icon: Users,
       color: '#FF6B6B',
-      features: ['Real-time messaging', 'Photo/Video sharing', 'User profiles', 'Social interactions'],
-      status: 'Live'
+      features: ['Real-time messaging', 'Photo/Video sharing', 'User profiles', 'Social interactions', 'Lines', 'Podcasts'],
+      status: 'Pre-Launch',
+      viewDetails: 'https://nocorps.org/products/addagram',
+      gitHubLink: 'https://github.com/KANAGARAJ-M/'
     },
     {
       id: 2,
@@ -24,7 +26,9 @@ const Projects = () => {
       icon: BookOpen,
       color: '#4ECDC4',
       features: ['Course management', 'Video lectures', 'Progress tracking', 'Interactive quizzes'],
-      status: 'Live'
+      status: 'Live',
+      viewDetails: 'https://nocorps.org/products/kodex-learning',
+      gitHubLink: 'https://github.com/KANAGARAJ-M/'
     },
     {
       id: 3,
@@ -35,7 +39,9 @@ const Projects = () => {
       icon: Package,
       color: '#45B7D1',
       features: ['Inventory tracking', 'Order management', 'Automated reports', 'Real-time analytics'],
-      status: 'Completed'
+      status: 'Completed',
+      viewDetails: 'https://nocorps.org/products/warehouse-bin-management',
+      gitHubLink: 'https://github.com/KANAGARAJ-M/'
     },
     {
       id: 4,
@@ -46,7 +52,9 @@ const Projects = () => {
       icon: Truck,
       color: '#96CEB4',
       features: ['Livestock tracking', 'Health monitoring', 'Production analytics', 'Feed management'],
-      status: 'Completed'
+      status: 'In Development',
+      viewDetails: 'https://nocorps.org/products/',
+      gitHubLink: 'https://github.com/KANAGARAJ-M/'
     },
     {
       id: 5,
@@ -57,7 +65,9 @@ const Projects = () => {
       icon: FileText,
       color: '#FECA57',
       features: ['PDF merge/split', 'Format conversion', 'Text extraction', 'Document editing'],
-      status: 'Live'
+      status: 'Live',
+      viewDetails: 'https://pdftools.nocorps.org/',
+      gitHubLink: 'https://github.com/KANAGARAJ-M/PDF-TOOLS'
     },
     {
       id: 6,
@@ -68,7 +78,9 @@ const Projects = () => {
       icon: Network,
       color: '#FF9FF3',
       features: ['Developer profiles', 'Project collaboration', 'Skill matching', 'Real-time chat'],
-      status: 'In Development'
+      status: 'In Development',
+      viewDetails: 'https://nocorps.org/products/blue-devconnect',
+      gitHubLink: 'https://github.com/KANAGARAJ-M/'
     }
   ]
 
@@ -77,6 +89,7 @@ const Projects = () => {
       case 'Live': return '#4ECDC4'
       case 'Completed': return '#96CEB4'
       case 'In Development': return '#FECA57'
+      case 'Pre-Launch': return '#FF6B6B'
       default: return '#ffffff'
     }
   }
@@ -144,11 +157,11 @@ const Projects = () => {
                 </div>
 
                 <div className="project-actions">
-                  <button className="project-btn btn-primary">
+                  <button className="project-btn btn-primary" onClick={() => window.open(project.viewDetails, '_blank')}>
                     <ExternalLink size={18} />
                     View Details
                   </button>
-                  <button className="project-btn btn-secondary">
+                  <button className="project-btn btn-secondary" onClick={() => window.open(project.gitHubLink, '_blank')}>
                     <Github size={18} />
                     Source Code
                   </button>

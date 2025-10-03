@@ -15,19 +15,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: 'Email',
-      value: 'mkrcreations.dev@gmail.com',
-      link: 'mailto:mkrcreations.dev@gmail.com'
+      value: 'kanagarajm638@gmail.com',
+      link: 'mailto:kanagarajm638@gmail.com'
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 XXX XXX XXXX',
-      link: 'tel:+91XXXXXXXXXX'
+      value: '+91 6383588281',
+      link: 'tel:+916383588281'
     },
     {
       icon: MapPin,
       label: 'Location',
-      value: 'Coimbatore, Tamil Nadu, India',
+      value: 'Tiruppur, Tamil Nadu, India',
       link: '#'
     }
   ]

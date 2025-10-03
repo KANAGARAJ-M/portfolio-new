@@ -102,7 +102,7 @@ const Skills = () => {
                       transition={{ delay: (categoryIndex * 0.1) + (skillIndex * 0.05), duration: 0.3 }}
                     >
                       <div className="skill-header">
-                        <span className="skill-icon">{skill.icon}</span>
+                        {/* <span className="skill-icon">{skill.icon}</span> */}
                         <span className="skill-name">{skill.name}</span>
                         <span className="skill-percentage">{skill.level}%</span>
                       </div>

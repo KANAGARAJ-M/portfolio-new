@@ -8,7 +8,7 @@ const Hero = () => {
     { icon: Linkedin, url: 'https://www.linkedin.com/in/kanagaraj-m-b86439227/', label: 'LinkedIn' },
     { icon: Twitter, url: 'https://twitter.com/mr_kanagaraj_m', label: 'Twitter' },
     { icon: Instagram, url: 'https://www.instagram.com/kanagaraj.m_mkr/', label: 'Instagram' },
-    { icon: Mail, url: 'mailto:mkrcreations.dev@gmail.com', label: 'Email' }
+    { icon: Mail, url: 'mailto:kanagarajm638@gmail.com', label: 'Email' }
   ]
 
   const scrollToContact = () => {

@@ -8,7 +8,7 @@ const Footer = () => {
     { icon: Linkedin, url: 'https://www.linkedin.com/in/kanagaraj-m-b86439227/', label: 'LinkedIn' },
     { icon: Twitter, url: 'https://twitter.com/mr_kanagaraj_m', label: 'Twitter' },
     { icon: Instagram, url: 'https://www.instagram.com/kanagaraj.m_mkr/', label: 'Instagram' },
-    { icon: Mail, url: 'mailto:mkrcreations.dev@gmail.com', label: 'Email' }
+    { icon: Mail, url: 'mailto:kanagarajm638@gmail.com', label: 'Email' }
   ]
 
   const quickLinks = [
@@ -111,8 +111,8 @@ const Footer = () => {
           >
             <h4 className="section-title">Get In Touch</h4>
             <div className="contact-info">
-              <p><Mail size={16} /> mkrcreations.dev@gmail.com</p>
-              <p>📍 Coimbatore, Tamil Nadu, India</p>
+              <p><Mail size={16} /> kanagarajm638@gmail.com</p>
+              <p>📍 Tiruppur, Tamil Nadu, India</p>
               <p>🚀 Available for freelance work</p>
             </div>
           </motion.div>
