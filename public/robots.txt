@@ -4,9 +4,25 @@ Allow: /
 # Sitemap
 Sitemap: https://kanagaraj.nocorps.org/sitemap.xml
 
-# Disallow admin or private directories (add if any)
-# Disallow: /admin/
-# Disallow: /private/
+# Allow specific important files
+Allow: /assets/*
+Allow: /src/assets/*
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.pdf
 
-# Allow all search engines to crawl the site
+# Disallow build files and development directories
+Disallow: /node_modules/
+Disallow: /dist/
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /src/
+
+# Allow all search engines to crawl the site efficiently
 Crawl-delay: 1
+
+# Host specification for better indexing
+Host: https://kanagaraj.nocorps.org

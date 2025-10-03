@@ -52,21 +52,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- JSON-LD Structured Data -->
+    <!-- Enhanced JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Kanagaraj M",
+      "givenName": "Kanagaraj",
+      "familyName": "M",
       "jobTitle": "Fullstack Developer",
-      "description": "Professional Fullstack Developer specializing in Flutter, React, Python, and Firebase development",
+      "description": "Professional Fullstack Developer specializing in Flutter, React, Python, and Firebase development. Expert in mobile app development, web applications, and enterprise solutions.",
       "url": "https://kanagaraj.nocorps.org",
       "image": "https://kanagaraj.nocorps.org/profile-image.jpg",
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "V.S.B College of Engineering Technical Campus",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Coimbatore",
+          "addressRegion": "Tamil Nadu",
+          "addressCountry": "IN"
+        }
+      },
       "sameAs": [
         "https://github.com/KANAGARAJ-M",
         "https://www.linkedin.com/in/kanagaraj-m-b86439227/",
         "https://twitter.com/mr_kanagaraj_m",
-        "https://www.instagram.com/kanagaraj.m_mkr/"
+        "https://www.instagram.com/kanagaraj.m_mkr/",
+        "https://nocorps.org"
       ],
       "address": {
         "@type": "PostalAddress",
@@ -75,6 +88,12 @@
         "addressCountry": "IN"
       },
       "email": "kanagarajm638@gmail.com",
+      "telephone": "+916383588281",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "NoCorps",
+        "url": "https://nocorps.org"
+      },
       "knowsAbout": [
         "Flutter Development",
         "React Development", 
@@ -83,7 +102,31 @@
         "PostgreSQL",
         "Mobile App Development",
         "Web Development",
-        "Full Stack Development"
+        "Full Stack Development",
+        "Android Development",
+        "JavaScript",
+        "Cloud Computing",
+        "SEO Optimization"
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Android Development Essential Training",
+          "credentialCategory": "Professional Certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "LinkedIn Learning"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential", 
+          "name": "Full Stack Android Development and Mobile App Marketing",
+          "credentialCategory": "Professional Certificate",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Udemy"
+          }
+        }
       ],
       "hasOccupation": {
         "@type": "Occupation",
@@ -91,7 +134,28 @@
         "occupationLocation": {
           "@type": "Place",
           "name": "Tamil Nadu, India"
-        }
+        },
+        "skills": "Flutter, React, Python, Firebase, PostgreSQL, Mobile Development, Web Development"
+      }
+    }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Kanagaraj M Portfolio",
+      "url": "https://kanagaraj.nocorps.org",
+      "description": "Professional portfolio of Kanagaraj M, a Fullstack Developer from Tamil Nadu, India",
+      "publisher": {
+        "@type": "Person",
+        "name": "Kanagaraj M"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://kanagaraj.nocorps.org/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
     }
     </script>
